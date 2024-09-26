@@ -1,9 +1,11 @@
 from contextlib import contextmanager
-from sqlalchemy import create_engine, MetaData, Table, Index
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import MetaData, Table, Index, inspect
+from sqlalchemy.exc import SQLAlchemyError
 
-engine = create_engine('postgresql://postgres:1234@localhost/movie_rental_db')
+engine = create_engine('postgresql://postgres:1234@localhost/wwii_missions')
 
 _SessionFactory = sessionmaker(bind=engine)
 
@@ -15,8 +17,13 @@ def session_factory():
     return _SessionFactory()
 
 
+def create_table():
+    Base.metadata.create_all(engine)
+
+
 def drop_tables():
-   Base.metadata.drop_all(engine)
+    Base.metadata.drop_all(engine)
+
 
 @contextmanager
 def session_scope():
@@ -30,8 +37,6 @@ def session_scope():
     finally:
         session.close()
 
-from sqlalchemy import MetaData, Table, Index, inspect
-from sqlalchemy.exc import SQLAlchemyError
 
 def create_index_on_column(table_name, column_name, index_name=None):
     index_name = index_name or f'idx_{table_name}_{column_name}'

@@ -3,10 +3,10 @@ from sqlalchemy.orm import relationship
 from config.base import Base
 
 
-class Mission(Base):
-    __tablename__ = 'mission'
+class NewMission(Base):
+    __tablename__ = 'new_mission'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     target_id = Column(Integer, ForeignKey('target.id'))
     country_id = Column(Integer, ForeignKey('country.id'))
     city_id = Column(Integer, ForeignKey('city.id'))
