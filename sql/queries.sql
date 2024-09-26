@@ -1,5 +1,3 @@
-
-
 1.
 SELECT air_force, COUNT(*) AS mission_count
 FROM mission
@@ -63,4 +61,7 @@ order by count(bomb_damage_assessment) desc limit 1
 
 "EXCELLENT" 7
 
+
+CREATE INDEX idx_mission_performance ON mission (airborne_aircraft, bomb_damage_assessment, target_country);
+DROP INDEX idx_mission_performance;
 
