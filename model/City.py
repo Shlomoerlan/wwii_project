@@ -8,6 +8,6 @@ class City(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     city_name = Column(String(255), unique=True, nullable=False)
-    country_id = Column(Integer, ForeignKey('country.id'), unique=True, nullable=False)
+    country_id = Column(Integer, ForeignKey('country.id'), nullable=False)
 
     country = relationship("Country")
