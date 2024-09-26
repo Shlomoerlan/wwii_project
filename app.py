@@ -12,6 +12,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 if __name__ == "__main__":
     create_table()
-    app.register_blueprint(new_mission_blueprint, url_prefix="/api/missions")
+    app.register_blueprint(new_mission_blueprint, url_prefix="/api/targets")
     app.register_blueprint(mission_blueprint, url_prefix="/api/missions")
     app.run(debug=True)

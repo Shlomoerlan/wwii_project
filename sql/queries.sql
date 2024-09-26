@@ -53,3 +53,14 @@ CREATE INDEX idx_airborne_aircraft ON mission(airborne_aircraft);
 DROP INDEX IF EXISTS idx_mission_date;
 DROP INDEX IF EXISTS idx_air_force;
 DROP INDEX IF EXISTS idx_airborne_aircraft;
+
+2.
+select bomb_damage_assessment, count(target_country) from mission
+where bomb_damage_assessment is not null
+and airborne_aircraft > 5
+group by target_country, bomb_damage_assessment
+order by count(bomb_damage_assessment) desc limit 1
+
+"EXCELLENT" 7
+
+

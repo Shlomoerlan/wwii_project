@@ -11,7 +11,6 @@ def get_all_missions(limit: Optional[int] = None) -> List[Mission]:
             query = query.limit(limit)
         return query.all()
 
-print(get_all_missions())
 def get_mission_by_id(target_id: int) -> Maybe[Mission]:
     with session_factory() as session:
         return Maybe.from_optional(session.query(Mission).get(target_id))

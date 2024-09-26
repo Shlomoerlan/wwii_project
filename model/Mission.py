@@ -16,16 +16,13 @@ class Mission(Base):
     takeoff_location = Column(String(255))
     attacking_aircraft = Column(Integer)
     bombing_aircraft = Column(Integer)
-    aircraft_returned = Column(Integer)
 
     def __repr__(self):
         return (f"<Mission(mission_id={self.mission_id}, mission_date='{self.mission_date}', "
                 f"theater_of_operations='{self.theater_of_operations}', country='{self.country}', "
                 f"air_force='{self.air_force}', unit_id='{self.unit_id}', "
-                f"aircraft_series='{self.aircraft_series}', callsign='{self.callsign}', "
                 f"mission_type='{self.mission_type}', takeoff_base='{self.takeoff_base}', "
-                f"attacking_aircraft={self.attacking_aircraft}, bombing_aircraft={self.bombing_aircraft}, "
-                f"aircraft_returned={self.aircraft_returned})>")
+                f"attacking_aircraft={self.attacking_aircraft}, bombing_aircraft={self.bombing_aircraft})>")
 
 
 
