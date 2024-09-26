@@ -5,3 +5,4 @@ from .Country import Country
 from .NewMission import NewMission
 from .Industry import Industry
 from .Priority import Priority
+from .Mission import Mission

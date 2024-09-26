@@ -18,11 +18,13 @@ def session_factory():
 
 
 def create_table():
-    Base.metadata.create_all(engine)
+    tables_to_create = [table for name, table in Base.metadata.tables.items() if name != 'mission']
+    Base.metadata.create_all(engine, tables=tables_to_create)
 
 
 def drop_tables():
-    Base.metadata.drop_all(engine)
+    tables_to_drop = [table for name, table in Base.metadata.tables.items() if name != 'mission']
+    Base.metadata.drop_all(engine, tables=tables_to_drop)
 
 
 @contextmanager
